@@ -1,7 +1,7 @@
 // see https://stackoverflow.com/questions/23202136/changing-navigator-useragent-using-chrome-extension
 var actualCode =  '(' + function() {
     // Get the correct platform for navigator.userAgent 
-    var candidates = ["Android", "iPhone", "iPod", "iPad"];
+    var candidates = ["Android", "iPhone", "iPod", "iPad", "Win"];
     var modifiedPlatform;
     for(var maybe of candidates) {
         if(navigator.userAgent.match(maybe)) {
@@ -24,5 +24,5 @@ var actualCode =  '(' + function() {
 // Inject custom js
 var s = document.createElement('script');
 s.textContent = actualCode;
-document.documentElement.appendChild(s);
+document.documentElement.insertBefore(s, document.documentElement.firstChild)
 s.remove();
